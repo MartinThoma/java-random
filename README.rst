@@ -10,7 +10,19 @@ implementation for Python.
 Installation
 ============
 
-A standard setup.py is provided.
+.. code-block:: bash
+
+   $ pip install java-random
+
+Usage
+=====
+
+.. code-block:: python
+
+    >>> import javarandom
+    >>> r = javarandom.Random(0)
+    >>> r.nextDouble()
+    0.730967787376657
 
 FAQ
 ====

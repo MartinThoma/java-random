@@ -1,5 +1,6 @@
-import time
 import math
+import time
+
 
 class Random(object):
     """
@@ -16,7 +17,7 @@ class Random(object):
     synchronize all accesses to this class per-instance.
     """
 
-    def __init__(self, seed = None):
+    def __init__(self, seed=None):
         """
         Create a new random number generator.
         """
@@ -40,7 +41,7 @@ class Random(object):
 
     @seed.setter
     def seed(self, seed):
-        self._seed = (seed ^ 0x5deece66d) & ((1 << 48) - 1)
+        self._seed = (seed ^ 0x5DEECE66D) & ((1 << 48) - 1)
 
     def next(self, bits):
         """
@@ -56,13 +57,13 @@ class Random(object):
         elif bits > 32:
             bits = 32
 
-        self._seed = (self._seed * 0x5deece66d + 0xb) & ((1 << 48) - 1)
+        self._seed = (self._seed * 0x5DEECE66D + 0xB) & ((1 << 48) - 1)
         retval = self._seed >> (48 - bits)
 
         # Python and Java don't really agree on how ints work. This converts
         # the unsigned generated int into a signed int if necessary.
         if retval & (1 << 31):
-            retval -= (1 << 32)
+            retval -= 1 << 32
 
         return retval
 
@@ -74,14 +75,14 @@ class Random(object):
         for i in range(0, len(l)):
             if not i % 4:
                 n = self.nextInt()
-            b = n & 0xff
+            b = n & 0xFF
             # Flip signs. Ugh.
             if b & 0x80:
                 b -= 0x100
             l[i] = b
             n >>= 8
 
-    def nextInt(self, n = None):
+    def nextInt(self, n=None):
         """
         Return a random int in [0, `n`).
 

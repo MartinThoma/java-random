@@ -4,8 +4,8 @@ import unittest
 
 import javarandom
 
-class AccuracyTest(unittest.TestCase):
 
+class AccuracyTest(unittest.TestCase):
     def setUp(self):
         self.r = javarandom.Random(0)
 
@@ -44,8 +44,8 @@ class AccuracyTest(unittest.TestCase):
 
     def test_nextGaussian(self):
         standard = 0.80253306373903050, -0.90154608841751220
-        self.assertEqual((self.r.nextGaussian(), self.r.nextGaussian()),
-            standard)
+        self.assertEqual((self.r.nextGaussian(), self.r.nextGaussian()), standard)
+
 
 if __name__ == "__main__":
     unittest.main()
